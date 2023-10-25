@@ -132,7 +132,6 @@ public class TestSmellMojo extends AbstractMojo {
             String htmlFile = MessageFormat.format("{0}_{1}_{2}.{3}", "Output", "TestSmellDetection", time, "html");
             try (FileWriter writer = new FileWriter(htmlFile)) {
                 for (String line : lines) {
-                    System.out.println(line);
                     writer.write(line + "\n");
                 }
             } catch (IOException e) {
