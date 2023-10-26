@@ -19,13 +19,12 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
-import org.apache.maven.project.MavenProject;
 
 @Mojo(name = "test-smell-html", defaultPhase = LifecyclePhase.TEST)
 public class TestSmellMojo extends AbstractMojo {
 
-    @Parameter(defaultValue = "${project}", required = true, readonly = true)
-    MavenProject project;
+    @Parameter(defaultValue = "pathToInputFile.csv", required = true, readonly = true)
+    String input;
 
     public void execute() throws MojoExecutionException, MojoFailureException {
 
@@ -36,7 +35,7 @@ public class TestSmellMojo extends AbstractMojo {
          */
         BufferedReader in;
         try {
-            in = new BufferedReader(new FileReader("pathToInputFile.csv"));
+            in = new BufferedReader(new FileReader(input));
             String str;
 
             String[] lineItem;
